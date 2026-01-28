@@ -5,12 +5,12 @@ Use this checklist to start a brand-new project and ship a working MVP in one da
 ---
 
 ## Setting up Cursor (5–10 minutes)
-
-- [ ] Copy the entire template folder to a new project location
-- [ ] Rename the folder to the new project name
-- [ ] Open the new project in Cursor
+ 
+- [ ] Open this template folder inside Cursor
 - [ ] Open the terminal inside Cursor
 - [ ] Start Claude Code (use the same command you normally run): `claude`
+- [ ] Ask Claude to clone this repo under a specific project name (eg. 'podcast-transcriber')
+- [ ] Once it's been cloned, open the project in a new Cursor window and open Claude Code.
 - [ ] Add the plugin marketplace:
   ```
   /plugin marketplace add https://github.com/EveryInc/compound-engineering-plugin
