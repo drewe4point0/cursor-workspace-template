@@ -10,6 +10,7 @@ Use this checklist to start a brand-new project and ship a working MVP in one da
 - [ ] Open the terminal inside Cursor
 - [ ] Start Claude Code (use the same command you normally run): `claude`
 - [ ] Ask Claude to clone this repo under a specific project name (eg. 'podcast-transcriber')
+    Prompt: Please clone this repo and use it to create a new project named: ____-____-____ 
 - [ ] Once it's been cloned, open the project in a new Cursor window and open Claude Code.
 - [ ] Add the plugin marketplace:
   ```
