@@ -4,6 +4,28 @@
 
 ---
 
+## Decision Tracking (MANDATORY)
+
+**Every engineering decision MUST be documented in `DECISIONS.md`.**
+
+When you (Claude) make or help make a decision about:
+- Which API, library, or service to use
+- Architecture or data flow choices
+- Authentication/authorization approach
+- Database schema or structure
+- UI component libraries or patterns
+- External integrations
+- Any choice where alternatives existed
+
+**You MUST:**
+1. Add the decision to the appropriate category in `DECISIONS.md`
+2. Include: Date, Context, Decision, Rationale
+3. If changing a previous decision, mark the old one as `[SUPERSEDED]` and explain why
+
+This is non-negotiable. The user is not a developer and needs a clear record of all technical choices made.
+
+---
+
 ## Compound Engineering
 
 **Each unit of work should make subsequent work easier, not harder.**
