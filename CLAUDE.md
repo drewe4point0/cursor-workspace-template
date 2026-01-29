@@ -4,28 +4,6 @@
 
 ---
 
-## Decision Tracking (MANDATORY)
-
-**Every engineering decision MUST be documented in `DECISIONS.md`.**
-
-When you (Claude) make or help make a decision about:
-- Which API, library, or service to use
-- Architecture or data flow choices
-- Authentication/authorization approach
-- Database schema or structure
-- UI component libraries or patterns
-- External integrations
-- Any choice where alternatives existed
-
-**You MUST:**
-1. Add the decision to the appropriate category in `DECISIONS.md`
-2. Include: Date, Context, Decision, Rationale
-3. If changing a previous decision, mark the old one as `[SUPERSEDED]` and explain why
-
-This is non-negotiable. The user is not a developer and needs a clear record of all technical choices made.
-
----
-
 ## Compound Engineering
 
 **Each unit of work should make subsequent work easier, not harder.**
@@ -72,6 +50,37 @@ pnpm db:types            # Regenerate types from schema
 - Early returns over nested conditionals
 - Keep files under 200 lines
 - Prefer duplication over premature abstraction
+
+---
+
+## Engineering Decisions
+
+**CRITICAL:** All engineering decisions must be documented in `DECISIONS.md`.
+
+When you make or recommend a decision about:
+- APIs, services, or external integrations
+- Libraries, packages, or dependencies
+- Architecture patterns or data flow
+- Authentication, storage, or infrastructure choices
+- Workflows, processes, or tooling
+- User experience patterns (progress indicators, notifications, etc.)
+- Feature scope or MVP boundaries
+
+You MUST:
+1. **Document it** — Add a new entry to `DECISIONS.md` with context, alternatives, and consequences
+2. **Check for conflicts** — Before adding, review existing decisions for conflicts
+3. **Note changes** — If a new decision supersedes an old one, add it to the "Decision Changes" section and update the old decision's status to "Superseded"
+4. **Ask when unclear** — If you're unsure whether something counts as a decision, ask
+
+**WORKFLOW INTEGRATION:** Decisions emerge during ALL interactions:
+- `/workflows:brainstorm` — Capture decisions about approach, scope, and architecture
+- `/workflows:plan` — Capture decisions about implementation strategy, libraries, and patterns
+- `/workflows:work` — Capture decisions made during implementation (e.g., "chose X library because Y")
+- **Any conversation** — Capture decisions made during regular chat (e.g., user says "let's use Redis for caching")
+
+**At the end of each session** (workflow or regular conversation), review the discussion for any decisions made and add them to `DECISIONS.md` before completing. If the user makes a choice between options, selects a technology, or agrees to an approach — that's a decision worth documenting.
+
+This creates a searchable history of why the project is built the way it is.
 
 ---
 
@@ -135,6 +144,8 @@ function getErrorMessage(error: unknown): string {
   /components   # UI components
   /lib          # Business logic, Supabase client
   /types        # TypeScript types
+
+DECISIONS.md    # Engineering decisions log (check before making new decisions)
 ```
 
 ---
