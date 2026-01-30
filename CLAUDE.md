@@ -84,6 +84,18 @@ This creates a searchable history of why the project is built the way it is.
 
 ---
 
+## Deployment
+
+**Auto-deploy to Vercel:** Pushing to `main` automatically triggers a Vercel deployment.
+
+- Production deploys from `main` branch
+- Preview deploys from pull requests
+- No manual deploy commands needed — just push to Git
+
+If Vercel is not yet connected, set it up at [vercel.com](https://vercel.com) by importing the Git repository.
+
+---
+
 ## Workflow
 
 1. **Plan first** — Use Plan Mode (shift+tab twice). Go back and forth until the plan is solid. Then switch to auto-accept and execute.
@@ -97,6 +109,8 @@ This creates a searchable history of why the project is built the way it is.
    - `docs:` documentation only
 
 4. **Update CLAUDE.md** — When Claude does something wrong, add it below so it doesn't happen again.
+
+5. **Deploy** — Push to `main` to deploy. Vercel handles the rest automatically.
 
 ---
 
