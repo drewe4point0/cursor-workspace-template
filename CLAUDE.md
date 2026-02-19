@@ -55,9 +55,11 @@ pnpm db:types            # Regenerate types from schema
 
 ## Engineering Decisions
 
-**CRITICAL:** All engineering decisions must be documented in `DECISIONS.md`.
+**CRITICAL: Write to `DECISIONS.md` IMMEDIATELY — not later, not at the end of the session, RIGHT NOW when the decision happens.**
 
-When you make or recommend a decision about:
+### What counts as a decision
+
+Any time the user selects between options, agrees to an approach, or a choice is made about:
 - APIs, services, or external integrations
 - Libraries, packages, or dependencies
 - Architecture patterns or data flow
@@ -66,21 +68,26 @@ When you make or recommend a decision about:
 - User experience patterns (progress indicators, notifications, etc.)
 - Feature scope or MVP boundaries
 
-You MUST:
-1. **Document it** — Add a new entry to `DECISIONS.md` with context, alternatives, and consequences
-2. **Check for conflicts** — Before adding, review existing decisions for conflicts
-3. **Note changes** — If a new decision supersedes an old one, add it to the "Decision Changes" section and update the old decision's status to "Superseded"
-4. **Ask when unclear** — If you're unsure whether something counts as a decision, ask
+### Automatic recording rules
 
-**WORKFLOW INTEGRATION:** Decisions emerge during ALL interactions:
-- `/workflows:brainstorm` — Capture decisions about approach, scope, and architecture
-- `/workflows:plan` — Capture decisions about implementation strategy, libraries, and patterns
-- `/workflows:work` — Capture decisions made during implementation (e.g., "chose X library because Y")
-- **Any conversation** — Capture decisions made during regular chat (e.g., user says "let's use Redis for caching")
+1. **When you present options and the user picks one** — Immediately after the user responds, write the decision to `DECISIONS.md` before doing anything else. Do not continue implementation until the decision is recorded.
+2. **When you recommend an approach and the user agrees** — That agreement is a decision. Write it to `DECISIONS.md` immediately.
+3. **When the user states a preference unprompted** (e.g., "let's use Redis for caching") — Write it to `DECISIONS.md` immediately.
+4. **When implementation forces a choice** (e.g., you pick library A over library B for a technical reason) — Write it to `DECISIONS.md` immediately and tell the user what you recorded.
 
-**At the end of each session** (workflow or regular conversation), review the discussion for any decisions made and add them to `DECISIONS.md` before completing. If the user makes a choice between options, selects a technology, or agrees to an approach — that's a decision worth documenting.
+### How to record
 
-This creates a searchable history of why the project is built the way it is.
+1. **Read `DECISIONS.md` first** — Check for conflicts with existing decisions.
+2. **Use the next available `DECISION-XXX` number.**
+3. **Write the entry using the Edit tool** — Add it to the correct category section in `DECISIONS.md` with all required fields (Date, Status, Context, Decision, Alternatives Considered, Consequences).
+4. **If it supersedes an old decision** — Update the old entry's status to `Superseded by DECISION-XXX` and add an entry to the "Decision Changes" section.
+
+### Non-negotiable
+
+- Do NOT batch decisions for later. Each decision gets written the moment it's made.
+- Do NOT skip recording because the decision feels small. If it affects how the project is built, it goes in the log.
+- Do NOT ask "should I record this?" — just record it. The user can always remove entries they don't want.
+- If you realize you forgot to record a decision from earlier in the conversation, stop what you're doing and record it now.
 
 ---
 
@@ -93,6 +100,38 @@ This creates a searchable history of why the project is built the way it is.
 - No manual deploy commands needed — just push to Git
 
 If Vercel is not yet connected, set it up at [vercel.com](https://vercel.com) by importing the Git repository.
+
+---
+
+## GitHub Account & Repository Management
+
+**IMPORTANT: At the start of every new project, before creating any repository or making any commits, ask me:**
+
+> "Is this a personal project or a Kambo project?"
+
+Then configure everything according to the answer:
+
+### If Personal Project
+- **GitHub owner:** `drewe4point0`
+- **Repo URL pattern:** `github.com/drewe4point0/<repo-name>`
+- **Git identity:** Use global git config (personal defaults)
+- **Visibility:** Confirm with me whether public or private
+
+### If Kambo Project
+- **GitHub owner:** `KamboEnergyGroup`
+- **Repo URL pattern:** `github.com/KamboEnergyGroup/<repo-name>`
+- **Git identity:** Set repo-level config:
+```bash
+  git config user.name "Drewe - Kambo Energy"
+  git config user.email "Apps@Kambo.com"
+```
+- **Visibility:** Default to **private** unless I say otherwise
+
+### Guardrails
+- **Never** create a repo under `drewe4point0` for Kambo work, or under `KamboEnergyGroup` for personal work. If unsure, stop and ask.
+- **Before the first push** of any new project, confirm the remote URL with me so I can verify it's pointing to the correct account/org.
+- When running `gh repo create`, always explicitly pass `--org KamboEnergyGroup` for Kambo projects or `--owner drewe4point0` for personal projects so ownership is never ambiguous.
+- After setting repo-level git config for Kambo projects, run `git config user.email` and show me the output to confirm it's set correctly before committing.
 
 ---
 
